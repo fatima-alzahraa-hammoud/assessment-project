@@ -77,4 +77,22 @@ class ProjectController extends Controller
             'status'=> 'success'
         ]);
     }
+
+    // delete a project
+    public function deleteProject(Request $request){
+        $project = Project::find($request->id);
+        try{
+            $project->delete();
+        }
+        catch(error){
+            return response()->json([
+                'status'=> 'error deleting project',
+                'message'=> 'can not delete the project'
+            ]);
+        }
+        return response()->json([
+            'status'=> 'success',
+            'message'=> 'deleteing project successfully',
+        ]);
+    }
 }
