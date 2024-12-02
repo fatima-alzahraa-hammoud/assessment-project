@@ -55,7 +55,7 @@ const ProjectsProvider = ({children}) =>{
     return (
     <ProjectsProvider.Provider
         value={{
-        list: projects,
+        projects: projects,
         getProjects,
         createProject,
         updateProject,
