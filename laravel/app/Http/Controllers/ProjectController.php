@@ -58,4 +58,23 @@ class ProjectController extends Controller
             'status'=> 'success'
         ]);
     }
+
+    // update a project
+    public function updateProject(Request $request){
+        $project = Project::find($request->id);
+        if ($request->name)
+            $project->name = $request->name;
+        if ($request->description)
+            $project->description = $request->description;
+        $success = $project->save();
+        if(!$success){
+            return response()->json([
+                'status'=> 'error updating project'
+            ]);
+        }
+
+        return response()->json([
+            'status'=> 'success'
+        ]);
+    }
 }
