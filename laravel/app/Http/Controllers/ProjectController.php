@@ -55,7 +55,8 @@ class ProjectController extends Controller
         }
 
         return response()->json([
-            'status'=> 'success'
+            'status'=> 'success',
+            'project' => $project
         ]);
     }
 
@@ -74,13 +75,14 @@ class ProjectController extends Controller
         }
 
         return response()->json([
-            'status'=> 'success'
+            'status'=> 'success',
+            'project' => $project
         ]);
     }
 
     // delete a project
-    public function deleteProject(Request $request){
-        $project = Project::find($request->id);
+    public function deleteProject($id){
+        $project = Project::find($id);
         try{
             $project->delete();
         }
