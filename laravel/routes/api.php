@@ -7,4 +7,6 @@ use Illuminate\Support\Facades\Route;
 Route::prefix("/products")->group(function () {
     Route::get("/",[ProjectController::class,"getProjectsWithMembers"]);
     Route::post("/",[ProjectController::class,"createProject"]);
+    Route::post("/update",[ProjectController::class,"updateProject"]);
+    Route::delete("/",[ProjectController::class,"deleteProject"]);
 });
