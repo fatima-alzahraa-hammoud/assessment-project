@@ -40,4 +40,22 @@ class ProjectController extends Controller
             'projects'=> $projects,
         ]);
     }
+
+    // create a project
+    public function createProject(Request $request){
+        $project = new Project();
+        $project->name = $request->name;
+        $project->description = $request->description;
+        
+        $success = $project->save();
+        if(!$success){
+            return response()->json([
+                'status'=> 'error creating project'
+            ]);
+        }
+
+        return response()->json([
+            'status'=> 'success'
+        ]);
+    }
 }
